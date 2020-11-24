@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 
 class loginForm extends Component {
-    
+
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log("eeeeeeee")
+        fetch('http://localhost:3001/users',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}})
+        .then(res =>{
+            res.json()
+            .then(data => console.log(data))
+        })
     }
 
     render() {
