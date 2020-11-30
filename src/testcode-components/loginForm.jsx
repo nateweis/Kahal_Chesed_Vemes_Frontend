@@ -30,7 +30,30 @@ class loginForm extends Component {
 
     handleSubmitSignup = (e) => {
         e.preventDefault()
-        if(this.state.password !== this.state.confirmPassword) this.setState({errorMessage: "Password Has To Match Confirmation Password", password: "", confirmPassword: ""})
+
+        if(this.state.username.length <= 1) this.setState({errorMessage: "Longer Passsword Required (Minimum Characters 2)", username: ""})
+        else if(this.state.password.length < 8) this.setState({errorMessage: "Password Has To Be At Least 8 Characters Long", password: "", confirmPassword: ""})
+        else if(this.state.password !== this.state.confirmPassword) this.setState({errorMessage: "Password Has To Match Confirmation Password", password: "", confirmPassword: ""})
+        else if(this.state.email.length <= 1)this.setState({errorMessage: "Invalid Email Address", email: ""})
+        else if (this.state.email.length >= 1){
+            const emailCha = this.state.email.split("");
+            let hasAt = false;
+            let hasDot = false
+            emailCha.forEach(cha => {
+                if(cha === '@') hasAt = true;
+                if(cha === '.' && hasAt) hasDot = true;
+            });
+            if(hasDot === false) this.setState({errorMessage: "Invalid Email Address", email: ""})
+        }
+        else{
+            console.log("I made it this far")
+            // fetch('http://localhost:3001/users/newUser',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(this.state)})
+            // .then(res => {
+            //     res.json()
+            //     .then( data => console.log(data))
+            // })
+            
+        }
     }
 
     loggout = () => {
