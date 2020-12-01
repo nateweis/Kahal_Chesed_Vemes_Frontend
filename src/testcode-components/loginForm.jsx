@@ -15,6 +15,24 @@ class loginForm extends Component {
         }
     }
 
+    addNewUser = () => {
+        fetch('http://localhost:3001/users/newUser',{
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => {
+            res.json()
+            .then( data => {
+                this.resetState()
+                console.log(data)
+            })
+        })
+    }
+
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
@@ -24,18 +42,16 @@ class loginForm extends Component {
         fetch('http://localhost:3001/users',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}})
         .then(res =>{
             res.json()
-            .then(data => Auth.saveToken(data.token))
+            .then(data => {Auth.saveToken(data.token)
+                 this.resetState()})
         })
     }
 
     handleSubmitSignup = (e) => {
         e.preventDefault()
+        let properEmailFormat = false;
 
-        if(this.state.username.length <= 1) this.setState({errorMessage: "Longer Passsword Required (Minimum Characters 2)", username: ""})
-        else if(this.state.password.length < 8) this.setState({errorMessage: "Password Has To Be At Least 8 Characters Long", password: "", confirmPassword: ""})
-        else if(this.state.password !== this.state.confirmPassword) this.setState({errorMessage: "Password Has To Match Confirmation Password", password: "", confirmPassword: ""})
-        else if(this.state.email.length <= 1)this.setState({errorMessage: "Invalid Email Address", email: ""})
-        else if (this.state.email.length >= 1){
+        if (this.state.email.length >= 1){
             const emailCha = this.state.email.split("");
             let hasAt = false;
             let hasDot = false
@@ -44,20 +60,31 @@ class loginForm extends Component {
                 if(cha === '.' && hasAt) hasDot = true;
             });
             if(hasDot === false) this.setState({errorMessage: "Invalid Email Address", email: ""})
+            else properEmailFormat = true
         }
-        else{
-            console.log("I made it this far")
-            // fetch('http://localhost:3001/users/newUser',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(this.state)})
-            // .then(res => {
-            //     res.json()
-            //     .then( data => console.log(data))
-            // })
-            
+
+        if(this.state.username.length <= 1) this.setState({errorMessage: "Longer Passsword Required (Minimum Characters 2)", username: ""})
+        else if(this.state.password.length < 8) this.setState({errorMessage: "Password Has To Be At Least 8 Characters Long", password: "", confirmPassword: ""})
+        else if(this.state.password !== this.state.confirmPassword) this.setState({errorMessage: "Password Has To Match Confirmation Password", password: "", confirmPassword: ""})
+        else if(this.state.email.length <= 1)this.setState({errorMessage: "Invalid Email Address", email: ""})
+        else if(properEmailFormat){
+            this.addNewUser()
         }
     }
 
     loggout = () => {
         Auth.removeToken()
+    }
+
+    resetState = () => {
+        this.setState({
+            username: "",
+            password: "",
+            confirmPassword: "",
+            email: "",
+            admin: false,
+            errorMessage: ""
+        })
     }
 
     render() {
@@ -66,7 +93,9 @@ class loginForm extends Component {
             <>
                 <form onSubmit={this.handleSubmitLogin} style={style.form}>
                   <h3>Login</h3>
-                  <input type="text"/> <br/><br/>
+                  <input type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+                  <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+                    <br/><br/>
                   <input type="submit" value="Submit"/>
                 </form>  
 
