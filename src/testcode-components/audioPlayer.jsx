@@ -31,15 +31,17 @@ class audioPlayer extends Component{
      }
 
      handleProgressBar = (e) => {
-         
+         let comp = (e.target.value * this.state.rawET) / 100
+         this.setState({rawCT : comp})
+         this.ref.current.currentTime = comp
      }
     
 
     look = () => {
-        // console.log(this.ref)
+        console.log(this.ref)
         // console.log(this.ref.current.currentTime)
         // console.log(this.ref.current.duration)
-        console.log(this.fmtMSS(this.ref.current.duration))
+       console.log(this.ref.current.play)
        
     }
     
@@ -55,8 +57,16 @@ class audioPlayer extends Component{
                 ></audio>
                 <div > 
                     <button onClick={this.look}>Look</button>
-                    <button onClick={()=>this.ref.current.play()}>Play</button>
-                    <button onClick={()=> this.ref.current.pause()}>Pause</button>
+                    {
+                        this.state.rawET ? 
+                        this.ref.current.paused ? 
+                        <button onClick={()=>this.ref.current.play()}>Play</button> :
+                        <button onClick={()=> this.ref.current.pause()}>Pause</button>
+                        :
+                        "Loading........."
+                    }
+                    
+                    
                 </div>
 
                 <div className="progressb">
