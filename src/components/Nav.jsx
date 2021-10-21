@@ -7,13 +7,13 @@ class Nav extends Component{
             <>
                 <div>
                     <ul style={style.listBox}>
-                        <li>Logo</li>
-                        <li>ABOUT</li>
-                        <li>EVENTS</li>
-                        <li>SHUIRIM</li>
-                        <li>SIMCHA HALL</li>
-                        <li>GIVE BACK</li>
-                        <li>CONTACT US</li>
+                        <li onClick={()=> this.props.history.push('/pages/home')}>Logo</li>
+                        <li onClick={()=> this.props.history.push('/pages/events')}>ABOUT</li>
+                        <li onClick={()=> this.props.history.push('/pages/events')}>EVENTS</li>
+                        <li onClick={()=> this.props.history.push('/pages/events')}>SHUIRIM</li>
+                        <li onClick={()=> this.props.history.push('/pages/events')}>SIMCHA HALL</li>
+                        <li onClick={()=> this.props.history.push('/pages/events')}>GIVE BACK</li>
+                        <li onClick={()=> this.props.history.push('/pages/events')}>CONTACT US</li>
                     </ul>
                 </div>
             </>
@@ -29,6 +29,7 @@ const style = {
         justifyContent: 'space-around',
         padding: '15px 10%',
         margin: '0',
+        cursor: 'pointer'
     }
 }
 
