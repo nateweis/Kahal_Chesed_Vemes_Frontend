@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
-import Nav from './components/Nav';
+import Template from './components/Template/Template';
 import Home from './components/Home/HomePage';
 import Events from './components/Events/EventPage';
 
@@ -14,7 +14,7 @@ class App extends Component{
   render(){
     return(
       <BrowserRouter>
-        <Route path="/pages" render={({history})=> <Nav history={history} />} />
+        <Route path="/pages" render={({history})=> <Template history={history} />} />
         <Switch>
           {/* <Route path="/" exact render={()=> <Redirect to="/wine-store/home" />} />
           <Route path="/wine-store/home" exact render={({history})=><HomePage push={history.push} />} /> */}
