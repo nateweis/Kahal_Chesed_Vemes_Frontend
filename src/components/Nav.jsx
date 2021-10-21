@@ -25,9 +25,8 @@ const style = {
     listBox : {
         listStyle: 'none',
         display: 'flex',
-        border: '1px solid black',
         justifyContent: 'space-around',
-        padding: '15px 10%',
+        padding: '30px 10%',
         margin: '0',
         cursor: 'pointer'
     }
