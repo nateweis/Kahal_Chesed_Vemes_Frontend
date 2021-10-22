@@ -16,7 +16,7 @@ class loginForm extends Component {
     }
 
     addNewUser = () => {
-        fetch('https://kcv-api.herokuapp.com/users/newUser',{
+        fetch('http://localhost:3001/users/newUser',{
             method: 'POST',
             body: JSON.stringify(this.state),
             headers:{
@@ -39,7 +39,7 @@ class loginForm extends Component {
 
     handleSubmitLogin = (e) => {
         e.preventDefault()
-        fetch('https://kcv-api.herokuapp.com/users',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(this.state)})
+        fetch('http://localhost:3001/users',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(this.state)})
         .then(res =>{
             res.json()
             .then(data => {
