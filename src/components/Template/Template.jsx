@@ -11,7 +11,7 @@ class Template extends Component{
         return(
             <>  <FlashMessage />
                 <Nav history={this.props.history} />
-                <Footer />
+                {/* <Footer /> */}
             </>
         )
     }
