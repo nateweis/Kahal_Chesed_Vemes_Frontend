@@ -3,7 +3,7 @@
     list-style: none ;
     display: flex ;
     justify-content: space-around;
-    padding: 30px 10% ;
+    padding: 30px 15% 30px 10% ;
     margin: 0;
     cursor: pointer;
 }
@@ -13,5 +13,5 @@
     width: 100vw;
     background-color: black;
     position: absolute;
-    bottom: 0;
+    bottom: -254px;
 }

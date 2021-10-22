@@ -1,3 +1,66 @@
-.homeContainer div{
+.homeContainer > div{
     border: 1px solid black;
+}
+
+/* Slide Container */
+.homeContainer .slideContainer{
+    overflow: hidden;
+    position: relative;
+}
+
+.homeContainer .slideContainer .slides{
+    width: 500%;
+    display: flex;
+}
+
+.homeContainer .slideContainer .slides input{
+    display: none;
+}
+
+.homeContainer .slideContainer .slides .singleSlide{
+    width: 20%;
+    height: 200px;
+    transition: 2s;
+}
+.slides .singleSlide .innerDiv{
+    width: 700px;
+    height: 282px;
+    margin: auto;
+}
+
+
+/* Manual Btns for slide */
+.homeContainer .slideContainer .manualSwitch{
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+.homeContainer .slideContainer .manualSwitch .manual-btn{
+    border: 2px solid black;
+    padding: 5px ;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.homeContainer .slideContainer .manualSwitch .manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+.homeContainer .slideContainer .manualSwitch .manual-btn:hover{
+    background-color: black;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+#radio4:checked ~ .first{
+    margin-left: -60%;
 }
