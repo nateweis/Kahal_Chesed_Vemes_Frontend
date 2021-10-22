@@ -15,3 +15,13 @@
     position: absolute;
     bottom: -254px;
 }
+
+/* For Flash Message on Top */
+.animateMessage{
+    animation: animateWords 40s linear infinite;
+}
+
+@keyframes animateWords{
+    0%{transform: translateX(100%);}
+    100%{transform: translateX(-100%);}
+}
