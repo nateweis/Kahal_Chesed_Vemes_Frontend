@@ -5,12 +5,14 @@ import Publishings from './Publishings';
 import UpcomingEvents from './UpcomingEvents';
 import Zmainim from './Zmanim';
 
+import './home.css'
+
 class Home extends Component{
 
     render(){
         return(
             <>  
-                <div style={style.homeContainer}>
+                <div className="homeContainer" style={style.homeContainer}>
                     <HomeSlide />
                     <Zmainim />
                     <UpcomingEvents />
@@ -26,7 +28,7 @@ const style = {
         display : 'grid',
         gridTemplateColumns: 'repeat(4, 23%)',
         gridGap: '20px',
-        gridAutoRows: 'minmax(250px, auto)',
+        gridAutoRows: 'minmax(285px, auto)',
         padding: '0 10%'
     }
 }
