@@ -1,0 +1,17 @@
+
+.listBox {
+    list-style: none ;
+    display: flex ;
+    justify-content: space-around;
+    padding: 30px 10% ;
+    margin: 0;
+    cursor: pointer;
+}
+
+.footerContainer{
+    height: 200px;
+    width: 100vw;
+    background-color: black;
+    position: absolute;
+    bottom: -202px;
+}

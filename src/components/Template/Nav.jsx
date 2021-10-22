@@ -6,7 +6,7 @@ class Nav extends Component{
         return(
             <>
                 <div>
-                    <ul style={style.listBox}>
+                    <ul className="listBox">
                         <li onClick={()=> this.props.history.push('/pages/home')}>Logo</li>
                         <li onClick={()=> this.props.history.push('/pages/events')}>ABOUT</li>
                         <li onClick={()=> this.props.history.push('/pages/events')}>EVENTS</li>
