@@ -5,7 +5,7 @@ class Events extends Component{
     render(){
         return(
             <>  
-                Comming Soon ..... 
+                Coming Soon ..... 
             </>
         )
     }
