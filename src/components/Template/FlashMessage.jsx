@@ -4,7 +4,7 @@ class FlashMessage extends Component{
     constructor(props){
         super(props)
         this.state = {
-            flashMessage : 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis quaerat ullam tenetur porro alias illo eligendi, accusamus quo quasi? Nihil laudantium debitis, pariatur voluptates nemo eaque? In cum enim suscipit?'
+            flashMessage : 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda exercitationem quo vel consectetur veritatis veniam. Nisi voluptatum voluptates consectetur quaerat ex. Nam, quibusdam. Id ipsa consequatur dolorem ipsum neque quisquam?'
         }
     }
 
