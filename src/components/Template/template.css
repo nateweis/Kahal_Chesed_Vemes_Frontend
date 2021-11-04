@@ -18,7 +18,7 @@
 
 /* For Flash Message on Top */
 .animateMessage{
-    animation: animateWords 40s linear infinite;
+    animation: animateWords 30s linear infinite;
 }
 
 @keyframes animateWords{

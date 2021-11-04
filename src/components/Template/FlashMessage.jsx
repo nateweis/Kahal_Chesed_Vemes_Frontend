@@ -24,7 +24,7 @@ class FlashMessage extends Component{
 
 const style = {
     message:{
-        whiteSpace: 'nowrap',
+        width: 'max-content',
         fontSize : '18px'
     },
     messageContainer :{
