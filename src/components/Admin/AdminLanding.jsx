@@ -16,7 +16,7 @@ class AdminLanding extends Component{
     }
 
     addNewUser = () => {
-        fetch('https://kcv-api.herokuapp.com/users/newUser',{
+        fetch('http://localhost:3001/users/newUser',{
             method: 'POST',
             body: JSON.stringify(this.state),
             headers:{
