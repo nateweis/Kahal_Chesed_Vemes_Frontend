@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Auth from '../../modules/Auth'
 
-class AdminLanding extends Component{
+class Admin extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -64,6 +64,7 @@ class AdminLanding extends Component{
 
     loggout = () => {
         Auth.removeToken()
+        if(!Auth.getToken()) this.props.history.push('/pages/home')
     }
 
     resetState = () => {
@@ -91,7 +92,7 @@ class AdminLanding extends Component{
                     <input type="submit" />
                 </form>
 
-                {Auth.getToken() ? <button onClick={this.loggout}>Logout</button> : " "}
+                <button onClick={this.loggout}>Logout</button>
             </>
         )
     }
@@ -105,4 +106,4 @@ const style = {
     }
 }
 
-export default AdminLanding
+export default Admin

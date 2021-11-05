@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Auth from '../modules/Auth'
 
-class loginForm extends Component {
+class LoginForm extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -23,6 +23,9 @@ class loginForm extends Component {
             .then(data => {
                 data.token ? Auth.saveToken(data.token) : console.log(data)
                 this.resetState()
+
+                if(data.token) this.props.history.push('/pages/admin')
+
             })
         })
     }
@@ -58,4 +61,4 @@ const style = {
     }
 }
 
-export default loginForm
+export default LoginForm

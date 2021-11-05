@@ -16,7 +16,7 @@ class Nav extends Component{
                         <li onClick={()=> this.props.history.push('/pages/events')}>SIMCHA HALL</li>
                         <li onClick={()=> this.props.history.push('/pages/events')}>GIVE BACK</li>
                         <li onClick={()=> this.props.history.push('/pages/events')}>CONTACT US</li>
-                        {Auth.getToken() ? <li style={style.adminLink} onClick={()=> this.props.history.push('/pages/events')}>ADMIN</li> : ""}
+                        {Auth.getToken() ? <li style={style.adminLink} onClick={()=> this.props.history.push('/pages/admin')}>ADMIN</li> : ""}
                     </ul>
                 </div>
             </>
