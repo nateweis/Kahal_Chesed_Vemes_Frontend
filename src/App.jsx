@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
+import Auth from './modules/Auth';
 import Template from './components/Template/Template';
 import Home from './components/Home/HomePage';
 import Events from './components/Events/EventPage';
@@ -16,7 +17,7 @@ class App extends Component{
     return(
       <BrowserRouter>
         <Route path="/pages" render={({history})=> <Template history={history} />} />
-        <Route path="/pages/admin" exact render={({history})=> <Admin history={history} />}  />
+        <Route path="/pages/admin"  render={({history})=> (Auth.getToken()? <Admin history={history} /> : <Redirect to="/pages/home" />)}  />
         <Switch>
           {/* <Route path="/" exact render={()=> <Redirect to="/wine-store/home" />} />
           <Route path="/wine-store/home" exact render={({history})=><HomePage push={history.push} />} /> */}
@@ -28,7 +29,7 @@ class App extends Component{
 
           <Route path="/pages/events" exact component={Events} />
 
-          <Route path="/testPath2" exact component={audioPlayer} />
+          <Route path="/pages/admin/testPath2" exact component={audioPlayer} />
 
           <Route render={()=>{return (<div>404 page not found</div>)}} />
         </Switch>
