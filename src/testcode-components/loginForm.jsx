@@ -11,7 +11,8 @@ class loginForm extends Component {
             confirmPassword: "",
             email: "",
             admin: false,
-            errorMessage: ""
+            errorMessage: "",
+            key: 0
         }
     }
 
@@ -76,6 +77,7 @@ class loginForm extends Component {
 
     loggout = () => {
         Auth.removeToken()
+        this.setState({key: Math.random()})
     }
 
     resetState = () => {
@@ -89,8 +91,7 @@ class loginForm extends Component {
         })
     }
 
-    render() {
-        const lgout = Auth.getToken() ? <button onClick={this.loggout}>Logout</button> : " "
+    render() {  
         return (
             <>
                 <form onSubmit={this.handleSubmitLogin} style={style.form}>
@@ -112,7 +113,7 @@ class loginForm extends Component {
                     <input type="submit" />
                 </form>
 
-                {lgout}
+                {Auth.getToken() ? <button key={this.state.key} onClick={this.loggout}>Logout</button> : " "}
             </>
         )
     }
