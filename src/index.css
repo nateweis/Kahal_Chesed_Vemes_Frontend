@@ -18,7 +18,15 @@ code {
 }
 #root{
   position: relative;
+  --black: #514747;
+  --blue: #2A4158;
+  --light-blue: #597387;
+  --gray-blue: #8C9EA3;
+  --light-yellow: #958A56;
+  --off-white: #F5EDED;
 }
 /* div{
   border: 1px solid black;
 } */
+
+
