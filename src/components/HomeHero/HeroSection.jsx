@@ -4,12 +4,14 @@ import Slider from './Slider'
 import ShabZman from './ShabZman'
 
 import {small, tablet} from '../../responsive'
+import Pic from '../../images/imgFile'
 
 const HeroSection = () => {
   return (
     <Container>
         <Top>
-            <Img />
+            <Img src={Pic['background1']} />
+            <Overlay />
         </Top>
 
         <Center>
@@ -29,11 +31,23 @@ const Container = styled.div`
     border-bottom: 3px solid black;
 `
 const Top = styled.div` 
-    height: 35%;
+    height: 50%;
+    position: relative;
 `
 const Img = styled.div` 
     height: 100% ;
-    background-color: rgba(0,0,0,.2);
+    width: 100% ;
+    background-image: url(${Pic['background1']});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 70%;
+`
+const Overlay = styled.div` 
+    position: absolute;
+    width: 100% ;
+    height :100%;
+    background-color: #51474745;
+    top: 0;
 `
 const Center = styled.div` 
     height: 75%;
@@ -41,12 +55,12 @@ const Center = styled.div`
     max-width: 1440px; 
     ${small({width: '80%', minWidth: '840px'})}
     ${tablet({width: '100%', minWidth: '0'})}
-    border: 2px solid black;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+    justify-content: space-between;
 `
 
 export default HeroSection

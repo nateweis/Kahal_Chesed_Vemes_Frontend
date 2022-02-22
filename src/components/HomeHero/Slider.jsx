@@ -4,14 +4,17 @@ import styled from 'styled-components'
 const Slider = () => {
   return (
     <Container>
-        slider
+        
     </Container>
   )
 }
 
 // ///// Style ////////
 const Container = styled.div` 
- background-color: pink;
+ border: 7px solid #8C9EA3;
+ width: 57% ;
+ border-radius: 5px;
+ background-color: #F5EDED;
 `
 
 export default Slider

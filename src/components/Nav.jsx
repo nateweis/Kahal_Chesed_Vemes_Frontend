@@ -12,7 +12,7 @@ const Nav = () => {
 // ///// Style ////////
 const Container = styled.div` 
   height: 80px;
-  background-color: #2A4158;
+  background-color: #2A4158ee;
  
 `
 
