@@ -51,9 +51,9 @@ const Overlay = styled.div`
 `
 const Center = styled.div` 
     height: 75%;
-    width: 80% ;
+    width: 85% ;
     max-width: 1440px; 
-    ${small({width: '80%', minWidth: '840px'})}
+    ${small({width: '85%', minWidth: '840px'})}
     ${tablet({width: '100%', minWidth: '0'})}
     position: absolute;
     top: 50%;

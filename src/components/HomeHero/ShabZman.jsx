@@ -11,7 +11,7 @@ const ShabZman = () => {
 
 // ///// Style ////////
 const Container = styled.div` 
-    width: 31% ;
+    width: 25% ;
     border: 7px solid #8C9EA3;
     border-radius: 5px;
     background-color: #F5EDED;

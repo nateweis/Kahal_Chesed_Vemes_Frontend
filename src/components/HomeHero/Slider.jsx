@@ -12,7 +12,7 @@ const Slider = () => {
 // ///// Style ////////
 const Container = styled.div` 
  border: 7px solid #8C9EA3;
- width: 57% ;
+ width: 69% ;
  border-radius: 5px;
  background-color: #F5EDED;
 `
