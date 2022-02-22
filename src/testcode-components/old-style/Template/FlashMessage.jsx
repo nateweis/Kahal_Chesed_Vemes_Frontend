@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class FlashMessage extends Component{
     constructor(props){
         super(props)
