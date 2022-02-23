@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Footer = () => {
+const DailyHalach = () => {
   return (
     <Container>
         
@@ -11,8 +11,8 @@ const Footer = () => {
 
 // ///// Style ////////
 const Container = styled.div` 
-    height: 50vh;
-    background-color: #514747;
+    height: 50vh ;
+    background-color: #958A56;
 `
 
-export default Footer
+export default DailyHalach

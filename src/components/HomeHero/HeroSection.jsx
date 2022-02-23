@@ -28,7 +28,7 @@ const Container = styled.div`
     position: relative;
     top: -80px;
     z-index: -1;
-    border-bottom: 3px solid black;
+    /* border-bottom: 3px solid black; */
 `
 const Top = styled.div` 
     height: 50%;
