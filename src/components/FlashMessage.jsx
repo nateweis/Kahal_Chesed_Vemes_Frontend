@@ -1,4 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react'
+import { Waypoint } from 'react-waypoint';
 import styled, { keyframes } from "styled-components";
 
 const FlashMessage = () => {
@@ -8,12 +9,16 @@ const FlashMessage = () => {
     setWidth(refMessage.current.offsetWidth)
   })
 
+  const entered = () => console.log("")
+
   return (
-    <Container>
-        <Wrapper ref={refMessage} num={width} time={20} >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, voluptatem! Nesciunt perferendis qui sapiente, laborum reprehenderit nam hic officia beatae eos odit minima, magni cumque accusamus dolorem id ipsa? Non.
-        </Wrapper> 
-    </Container>
+    <Waypoint onEnter={entered}>
+      <Container>
+          <Wrapper ref={refMessage} num={width} time={20} >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, voluptatem! Nesciunt perferendis qui sapiente, laborum reprehenderit nam hic officia beatae eos odit minima, magni cumque accusamus dolorem id ipsa? Non.
+          </Wrapper> 
+      </Container>
+    </Waypoint>
   )
 }
 
