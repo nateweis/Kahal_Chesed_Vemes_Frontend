@@ -11,7 +11,7 @@ const FlashMessage = () => {
   return (
     <Container>
         <Wrapper ref={refMessage} num={width} time={20} >
-            Flash Message Scrolling Across the Top
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, voluptatem! Nesciunt perferendis qui sapiente, laborum reprehenderit nam hic officia beatae eos odit minima, magni cumque accusamus dolorem id ipsa? Non.
         </Wrapper> 
     </Container>
   )

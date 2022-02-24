@@ -1,8 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
 const Slider = () => {
-  const [position, setPosition] = useState(1)
+  const [position, setPosition] = useState(0)
+  useEffect(() => {
+    const autoSlide = setInterval(() => {
+      if(position < 2) setPosition(pre => pre + 1)
+      else setPosition(0)
+    }, 10000)
+
+    return () => clearInterval(autoSlide)
+  })
 
   return (
     <Container>
