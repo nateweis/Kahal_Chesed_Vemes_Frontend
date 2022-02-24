@@ -3,12 +3,15 @@ import styled from 'styled-components'
 import Slider from './Slider'
 import ShabZman from './ShabZman'
 
+import {useSelector} from "react-redux";
 import {small, tablet} from '../../responsive'
 import Pic from '../../images/imgFile'
 
 const HeroSection = () => {
+  const navTop = useSelector(state => state.nav)
+
   return (
-    <Container>
+    <Container nav={navTop}>
         <Top>
             <Img src={Pic['background1']} />
             <Overlay />
@@ -26,7 +29,7 @@ const HeroSection = () => {
 const Container = styled.div` 
     height: 95vh;
     position: relative;
-    top: -80px;
+    top: ${props => props.nav? '0': '-80px'};
     /* border-bottom: 3px solid black; */
 `
 const Top = styled.div` 

@@ -1,15 +1,18 @@
 import React, {useRef, useState, useEffect} from 'react'
 import { Waypoint } from 'react-waypoint';
+import {useDispatch} from "react-redux";
+import {navTop} from '../reducers/PositionReducer';
 import styled, { keyframes } from "styled-components";
 
 const FlashMessage = () => {
   const [width, setWidth] = useState(30)
   const refMessage = useRef(null)
+  const dispatch = useDispatch()
   useEffect(() => {
     setWidth(refMessage.current.offsetWidth)
   })
 
-  const entered = () => console.log("")
+  const entered = () => dispatch(navTop(false))
 
   return (
     <Waypoint onEnter={entered}>

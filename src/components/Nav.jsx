@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import React from 'react';
 import { Waypoint } from 'react-waypoint';
-import styled from 'styled-components'
+import {useSelector, useDispatch} from "react-redux";
+import {navTop} from '../reducers/PositionReducer';
+import styled from 'styled-components';
 
 const Nav = () => {
-  const [fixed, setFixed] = useState(false)
-  const hit = () => setFixed(true)
+  const navState = useSelector(state => state.nav)
+  const dispatch = useDispatch()
+  const hit = () => dispatch(navTop(true))
 
   return (
     <Waypoint topOffset={80} onLeave={hit}>
-      <Container navFix={fixed}>
+      <Container navFix={navState}>
 
       </Container>
     </Waypoint>
