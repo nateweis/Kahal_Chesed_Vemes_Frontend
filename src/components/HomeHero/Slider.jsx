@@ -62,10 +62,10 @@ const CircleBtn = styled.div`
   border-radius: 50% ;
   margin: 0 10px;
   cursor: pointer;
-  transition: .1s ease-in-out;
-  background-color: ${props => props.bc && '#ddd'};
+  transition: .2s ease-in-out;
+  background-color: ${props => props.bc && 'white'};
 
-  &:hover{background-color: white}
+  &:hover{background-color: #ddd}
 `
 
 export default Slider
