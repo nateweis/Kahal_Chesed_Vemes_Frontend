@@ -15,6 +15,8 @@ const Container = styled.div`
  width: 69% ;
  border-radius: 5px;
  background-color: #F5EDED;
+ /* box-shadow: 5px 5px 25px #514747,
+      -5px -5px 25px #514747; */
 `
 
 export default Slider
