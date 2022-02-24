@@ -13,7 +13,8 @@ const Nav = () => {
 const Container = styled.div` 
   height: 80px;
   background-color: #2A4158ee;
- 
+  position: relative;
+  z-index: 100;
 `
 
 export default Nav

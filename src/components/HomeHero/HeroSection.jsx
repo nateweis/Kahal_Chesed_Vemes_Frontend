@@ -27,7 +27,6 @@ const Container = styled.div`
     height: 95vh;
     position: relative;
     top: -80px;
-    z-index: -1;
     /* border-bottom: 3px solid black; */
 `
 const Top = styled.div` 
@@ -58,6 +57,7 @@ const Center = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 2;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: space-between;
