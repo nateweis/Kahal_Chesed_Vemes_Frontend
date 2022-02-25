@@ -1,21 +1,25 @@
 import React, {useRef, useState, useEffect} from 'react'
-import { Waypoint } from 'react-waypoint';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {navTop} from '../reducers/PositionReducer';
+import { Waypoint } from 'react-waypoint';
 import styled, { keyframes } from "styled-components";
 
 const FlashMessage = () => {
   const [width, setWidth] = useState(30)
   const refMessage = useRef(null)
+  const navState = useSelector(state => state.nav)
   const dispatch = useDispatch()
   useEffect(() => {
     setWidth(refMessage.current.offsetWidth)
   })
 
-  const entered = () => dispatch(navTop(false))
+  const entered = () => {
+    dispatch(navTop(false))
+    console.log("hit")
+  }
 
   return (
-    <Waypoint onEnter={entered}>
+    <Waypoint onEnter={entered} bottomOffset={navState.navState? 20: 0}>
       <Container>
           <Wrapper ref={refMessage} num={width} time={20} >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, voluptatem! Nesciunt perferendis qui sapiente, laborum reprehenderit nam hic officia beatae eos odit minima, magni cumque accusamus dolorem id ipsa? Non.

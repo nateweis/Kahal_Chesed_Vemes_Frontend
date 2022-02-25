@@ -11,7 +11,7 @@ const HeroSection = () => {
   const navTop = useSelector(state => state.nav)
 
   return (
-    <Container nav={navTop}>
+    <Container nav={navTop.navState}>
         <Top>
             <Img src={Pic['background1']} />
             <Overlay />
