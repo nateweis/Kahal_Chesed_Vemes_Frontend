@@ -1,29 +1,25 @@
+@font-face{
+  font-family: 'Open Sans';
+  src: url('./images/Open_Sans/OpenSans-Regular.ttf')
+}
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans';
 }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-    
-}
 #root{
   position: relative;
   --black: #514747;
   --blue: #2A4158;
-  --light-blue: #597387;
-  --gray-blue: #8C9EA3;
-  --light-yellow: #958A56;
-  --off-white: #F5EDED;
+  --lb: #597387;
+  --gb: #8C9EA3;
+  --ly: #958A56;
+  --white: #F5EDED;
 }
 /* div{
   border: 1px solid black;

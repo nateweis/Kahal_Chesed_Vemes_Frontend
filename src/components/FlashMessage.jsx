@@ -1,11 +1,31 @@
-import React from 'react'
-import styled from "styled-components";
+import React, {useRef, useState, useEffect} from 'react'
+import {useDispatch, useSelector} from "react-redux";
+import {navTop} from '../reducers/PositionReducer';
+import { Waypoint } from 'react-waypoint';
+import styled, { keyframes } from "styled-components";
 
 const FlashMessage = () => {
+  const [width, setWidth] = useState(30)
+  const refMessage = useRef(null)
+  const navState = useSelector(state => state.nav)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    setWidth(refMessage.current.offsetWidth)
+  })
+
+  const entered = () => {
+    dispatch(navTop(false))
+    console.log("hit")
+  }
+
   return (
-    <Container>
-        
-    </Container>
+    <Waypoint onEnter={entered} bottomOffset={navState.navState? 20: 0}>
+      <Container>
+          <Wrapper ref={refMessage} num={width} time={20} >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, voluptatem! Nesciunt perferendis qui sapiente, laborum reprehenderit nam hic officia beatae eos odit minima, magni cumque accusamus dolorem id ipsa? Non.
+          </Wrapper> 
+      </Container>
+    </Waypoint>
   )
 }
 
@@ -13,6 +33,24 @@ const FlashMessage = () => {
 const Container = styled.div`
     height: 45px;
     background-color: #514747;
+    color: var(--white);
+    font-size: 20px;
+    overflow: 'hidden';
+    display: flex;
+    align-items: center;
 `
+
+const animateWords = (width) => keyframes`
+  0%{transform: translateX(100vw);}
+  100%{transform: translateX(-${width}px);}
+`
+
+const Wrapper = styled.div` 
+  min-width: max-content;
+  height: 75% ;
+  animation: ${props => animateWords(props.num)} ${props => props.time}s linear infinite;
+
+`
+
 
 export default FlashMessage
