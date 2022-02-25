@@ -48,7 +48,7 @@ const Overlay = styled.div`
     position: absolute;
     width: 100% ;
     height :100%;
-    background-color: #51474745;
+    background-color: #51474755;
     top: 0;
 `
 const Center = styled.div` 
