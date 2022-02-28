@@ -1,4 +1,5 @@
 import React from 'react'
+import { mobile } from '../../responsive'
 import styled from 'styled-components'
 
 const ShabZman = () => {
@@ -15,6 +16,7 @@ const Container = styled.div`
     border: 7px solid #8C9EA3;
     border-radius: 5px;
     background-color: #fff;
+    ${mobile({width: '100%'})}
 `
 const Title = styled.h1` 
 

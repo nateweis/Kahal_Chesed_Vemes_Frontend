@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {mobile} from '../../responsive'
 import styled from 'styled-components'
 
 const Slider = () => {
@@ -36,7 +37,7 @@ const Container = styled.div`
  border-radius: 5px;
  overflow: hidden;
  position: relative;
- 
+ ${mobile({display: 'none'})}
 `
 const Wrapper = styled.div` 
   width: 300% ;

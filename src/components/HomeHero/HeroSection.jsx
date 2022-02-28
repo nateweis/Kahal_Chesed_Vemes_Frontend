@@ -4,7 +4,7 @@ import Slider from './Slider'
 import ShabZman from './ShabZman'
 
 import {useSelector} from "react-redux";
-import {small, tablet} from '../../responsive'
+import {mobile, small, tablet} from '../../responsive'
 import Pic from '../../images/imgFile'
 
 const HeroSection = () => {
@@ -55,8 +55,6 @@ const Center = styled.div`
     height: 75%;
     width: 85% ;
     max-width: 1440px; 
-    ${small({width: '85%', minWidth: '840px'})}
-    ${tablet({width: '100%', minWidth: '0'})}
     position: absolute;
     top: 50%;
     left: 50%;
@@ -64,6 +62,9 @@ const Center = styled.div`
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: space-between;
+    ${small({width: '85%', minWidth: '840px'})}
+    ${tablet({width: '100%', minWidth: '0'})}
+    ${mobile({width: '300px'})}
 `
 
 export default HeroSection
