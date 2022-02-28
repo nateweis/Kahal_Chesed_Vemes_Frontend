@@ -13,10 +13,7 @@ const FlashMessage = () => {
     setWidth(refMessage.current.offsetWidth)
   })
 
-  const entered = () => {
-    dispatch(navTop(false))
-    console.log("hit")
-  }
+  const entered = () => dispatch(navTop(false))
 
   return (
     <Waypoint onEnter={entered} bottomOffset={navState.navState? 20: 0}>

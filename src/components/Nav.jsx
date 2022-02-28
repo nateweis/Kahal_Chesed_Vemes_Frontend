@@ -8,10 +8,7 @@ import styled from 'styled-components';
 const Nav = () => {
   const navState = useSelector(state => state.nav)
   const dispatch = useDispatch()
-  const hit = () => {
-    dispatch(navTop(true))
-    console.log("navhit")
-  }
+  const hit = () => dispatch(navTop(true))
 
   return (
     <Waypoint topOffset={navState.navState? 0 : 75} onLeave={hit}>
