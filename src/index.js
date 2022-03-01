@@ -6,9 +6,11 @@ import {configureStore, combineReducers} from '@reduxjs/toolkit';
 import App from './App';
 
 import PositionReducer from './reducers/PositionReducer'
+import OverlayReducer from './reducers/OverlayReducer';
 
 const reducer = combineReducers({
-    nav: PositionReducer
+    nav: PositionReducer,
+    overlay: OverlayReducer
 })
 
 

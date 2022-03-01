@@ -1,16 +1,18 @@
 import React from 'react'
-import DailyHalach from '../components/DailyHalach'
-import DailyZman from '../components/DailyZman'
-import Events from '../components/Events'
-import FlashMessage from '../components/FlashMessage'
-import Footer from '../components/Footer'
-import HeroSection from '../components/HomeHero/HeroSection'
-import Nav from '../components/Nav'
-import Publishings from '../components/Publishings'
+import InfoOverlay from '../components/InfoOverlay';
+import FlashMessage from '../components/FlashMessage';
+import Nav from '../components/Nav';
+import HeroSection from '../components/HomeHero/HeroSection';
+import DailyZman from '../components/DailyZman';
+import Publishings from '../components/Publishings';
+import DailyHalach from '../components/DailyHalach';
+import Events from '../components/Events';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
     <div>
+        <InfoOverlay />
         <FlashMessage />
         <Nav />
         <HeroSection />

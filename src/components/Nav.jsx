@@ -39,7 +39,7 @@ const Container = styled.div`
   background-color: ${props => props.navFix? '#2A4158ee' : 'transparent'};
   position: ${props => props.navFix? 'fixed' : 'relative'};
   top: ${props => props.navFix && 0};
-  z-index: 100;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
