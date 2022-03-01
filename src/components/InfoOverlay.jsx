@@ -22,6 +22,10 @@ const InfoOverlay = () => {
             <Container disp={overlayState.active}>
                 <Wrapper>
                     <CloseContainer onClick={exitModuel}><CloseOutlined style={{color: 'white', fontSize: '30px'}} /></CloseContainer>
+                    <Title>{overlayState.title}</Title>
+                    <ContentContainer>{overlayState.data? Object.keys(overlayState.data).map((key, i)=>(
+                        <Content key={i} >{key}</Content>
+                    )): ""}</ContentContainer>
                 </Wrapper>
             </Container>
     </CSSTransition>
@@ -62,6 +66,13 @@ const CloseContainer = styled.span`
         border: 1px solid white;
         border-radius: 50% ;
     }
+`
+const Title = styled.h1` 
+    color: #fff;
+`
+const ContentContainer = styled.div` `
+const Content = styled.div` 
+    color: #fff;
 `
 
 export default InfoOverlay

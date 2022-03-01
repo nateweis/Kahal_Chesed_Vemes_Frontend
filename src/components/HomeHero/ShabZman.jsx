@@ -1,11 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { mobile } from '../../responsive';
 import styled from 'styled-components';
 import {useDispatch} from "react-redux";
-import {overlayActive} from '../../reducers/OverlayReducer'
+import {overlayActive, updateData} from '../../reducers/OverlayReducer'
 
 const ShabZman = () => {
+  const initState = {
+    "Fiday, Jan 1": [["Event:", "12:00pm"], ["Event:", "12:00pm"], ["Event:", "12:00pm"]],
+    "Fiday, Jan 2": [["Event:", "12:00pm"], ["Event:", "12:00pm"], ["Event:", "12:00pm"], ["Event:", "12:00pm"]],
+  }
+  const [calander, setCalender] = useState(initState)
   const dispatch = useDispatch()
+  const moreBtn = () => {
+    dispatch(updateData({title: "Shabbos Zmanim", data: calander}))
+    dispatch(overlayActive(true))
+  }
 
   return (
     <Container>
@@ -14,36 +23,20 @@ const ShabZman = () => {
             <Title>Shabbos Zmanim</Title>
             <Hr />
           </Section>
-          
-          <Section>
-            <ListHeader>Friday, Jan 1</ListHeader>
-            <ListContainer>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-            </ListContainer>
-          </Section>
 
-          <Section>
-            <ListHeader>Friday, Jan 2</ListHeader>
-            <ListContainer>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-              <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
-            </ListContainer>
-          </Section>
+          {Object.keys(calander).map((key, index) => {
+            return(
+              <Section key={index}>
+                <ListHeader>{key}</ListHeader>
+                <ListContainer>
+                  {calander[key].map((item, i) => (<List key={i}> <Event>{item[0]}</Event> <Time>{item[1]}</Time> </List>))}
+                </ListContainer>
+              </Section>
+            )
+          })}
 
-          <Section>
-            <ListHeader>Friday, Jan 3</ListHeader>
+          {/* <Section>
+            <ListHeader>Friday, Jan 10</ListHeader>
             <ListContainer>
               <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
               <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
@@ -51,11 +44,11 @@ const ShabZman = () => {
               <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
               <List> <Event>Event:</Event> <Time>12:00pm</Time> </List>
             </ListContainer>
-          </Section>
+          </Section> */}
 
       </Wrapper>
 
-      <More onClick={() => dispatch(overlayActive(true))}>Show All</More>
+      <More onClick={moreBtn}>Show All</More>
 
     </Container>
   )
