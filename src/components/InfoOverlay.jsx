@@ -2,18 +2,29 @@ import React from 'react'
 import styled from 'styled-components'
 import {CloseOutlined} from '@material-ui/icons';
 import {useSelector, useDispatch} from "react-redux";
-import {overlayActive} from '../reducers/OverlayReducer'
+import {overlayActive, slideOut} from '../reducers/OverlayReducer';
+import {CSSTransition} from 'react-transition-group';
 
 
 const InfoOverlay = () => {
-  const overlayState = useSelector(state => state.overlay.active)
+
+  const overlayState = useSelector(state => state.overlay)
   const dispatch = useDispatch()
+  const exitModuel = () => {
+    dispatch(slideOut())
+    setTimeout(() => {
+        dispatch(overlayActive(false))
+    },500)
+  }
+
   return (
-    <Container disp={overlayState}>
-        <Wrapper>
-            <CloseContainer onClick={() => dispatch(overlayActive(false))}><CloseOutlined style={{color: 'white', fontSize: '30px'}} /></CloseContainer>
-        </Wrapper>
-    </Container>
+    <CSSTransition classNames={'slide-in-out'} in={overlayState.slide} timeout={0} >
+            <Container disp={overlayState.active}>
+                <Wrapper>
+                    <CloseContainer onClick={exitModuel}><CloseOutlined style={{color: 'white', fontSize: '30px'}} /></CloseContainer>
+                </Wrapper>
+            </Container>
+    </CSSTransition>
   )
 }
 
@@ -27,7 +38,13 @@ const Container = styled.div`
     display: ${props => props.disp? 'flex': 'none'};
     align-items: center;
     justify-content: center;
-`
+    transition: .5s linear;
+
+    &.slide-in-out-enter{transform: translateX(100vw);}
+    &.slide-in-out-enter-active{transform: translateX(0);}
+    &.slide-in-out-exit{transform: translateX(0);}
+    &.slide-in-out-exit-done{transform: translateX(100vw);}
+    `
 const Wrapper = styled.div` 
     width: 85%;
     height: 85% ;
