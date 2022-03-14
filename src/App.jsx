@@ -3,12 +3,22 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import Auth from './modules/Auth';
 
 import Home from './pages/Home';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
+import Admin from './pages/Admin';
 
 const App = () => {
   return(
-    <>
-      <Home />
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact render={()=> <Redirect to="/home" /> } />
+        <Route path="/home" exact render={()=> <Home /> } />
+        <Route path="/admin" exact render={()=> <Login /> } />
+        <Route path="/admin/edits" exact render={()=> <Admin /> } />
+
+        <Route render={() => <NotFound />} />
+      </Switch>
+    </BrowserRouter>
   )
 }
 
