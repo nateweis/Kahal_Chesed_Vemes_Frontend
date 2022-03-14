@@ -13,8 +13,8 @@ const App = () => {
       <Switch>
         <Route path="/" exact render={()=> <Redirect to="/home" /> } />
         <Route path="/home" exact render={()=> <Home /> } />
-        <Route path="/admin" exact render={()=> <Login /> } />
-        <Route path="/admin/edits" exact render={()=> <Admin /> } />
+        <Route path="/admin" exact render={({history})=> (Auth.getToken()? <Redirect to='/admin/edits' /> : <Login push={history.push} /> ) } />
+        <Route path="/admin/edits" exact render={({history})=> (Auth.getToken()? <Admin push={history.push} /> : <Redirect to='/home' /> ) } />
 
         <Route render={() => <NotFound />} />
       </Switch>
