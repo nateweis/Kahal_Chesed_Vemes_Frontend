@@ -1,8 +1,27 @@
-import { purple } from '@material-ui/core/colors'
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
+import Auth from '../modules/Auth';
 
-const Login = () => {
+const Login = (props) => {
+  const initState = {username: "", password: ""};
+  const [formState, setState] = useState(initState)
+
+  const handleChange = (e) => setState({...formState, [e.target.name]: e.target.value})
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    fetch('http://localhost:3001/users',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(formState)})
+    .then(res =>{
+        res.json()
+        .then(data => {
+            data.token ? Auth.saveToken(data.token) : console.log(data)
+            setState(initState)
+            if(data.token) props.push('/admin/edits')
+        })
+    })
+
+  }
+
   return (
     <Container>
         <Background>LOGO</Background>
@@ -11,16 +30,16 @@ const Login = () => {
             <Wrapper>
                 <InputItem>
                     <Label>Username</Label>
-                    <Input type='text' placeholder='Username' />
+                    <Input type='text' placeholder='Username' name="username" value={formState.username} onChange={handleChange} />
                 </InputItem>
 
                 <InputItem>
                     <Label>Password</Label>
-                    <Input type='password' placeholder='Password' />
+                    <Input type='password' placeholder='Password' name="password" value={formState.password} onChange={handleChange} />
                 </InputItem>
 
                 <InputItem>
-                    <Button>Log In</Button>
+                    <Button onClick={handleSubmit}>Log In</Button>
                 </InputItem>
             </Wrapper>
         </Form>
