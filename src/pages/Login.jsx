@@ -10,7 +10,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch('http://localhost:3001/users',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(formState)})
+    fetch('https://kcv-api.herokuapp.com/users',{method: 'POST', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(formState)})
     .then(res =>{
         res.json()
         .then(data => {
