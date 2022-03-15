@@ -5,12 +5,14 @@ import {Provider} from 'react-redux';
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
 import App from './App';
 
-import PositionReducer from './reducers/PositionReducer'
+import PositionReducer from './reducers/PositionReducer';
 import OverlayReducer from './reducers/OverlayReducer';
+import AdminReducer from './reducers/AdminReducer';
 
 const reducer = combineReducers({
     nav: PositionReducer,
-    overlay: OverlayReducer
+    overlay: OverlayReducer,
+    admin: AdminReducer
 })
 
 
