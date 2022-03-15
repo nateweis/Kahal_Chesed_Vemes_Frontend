@@ -1,15 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+import {useSelector, useDispatch} from "react-redux";
+import {slideIn, slideOut} from '../../reducers/AdminReducer'
 
 const Sidebar = () => {
+  const sidebarState = useSelector(state => state.admin)
+  const dispatch = useDispatch()
+  const switchSlide = (i) => {
+    dispatch(slideOut())
+    setTimeout(() => {
+        dispatch(slideIn(i))
+    },200)
+  }
+
   return (
     <Container>
         <Ul>
-            <Li> <Button>Link</Button> </Li>
-            <Li> <Button active={true} >Link</Button> </Li>
-            <Li> <Button active={false}>Link</Button> </Li>
-            <Li> <Button>Link</Button> </Li>
-            <Li> <Button>Link</Button> </Li>
+            {sidebarState.sidebar.map((key, i) => (<Li key={i}>
+                <Button active={key} onClick={() => switchSlide(i)} > {sidebarState.sidebarTitles[i]} </Button> 
+            </Li>))}
         </Ul>
     </Container>
   )
