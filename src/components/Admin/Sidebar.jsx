@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {useSelector, useDispatch} from "react-redux";
-import {slideIn, slideOut} from '../../reducers/AdminReducer'
+import {slideIn, slideOut, resetSlide} from '../../reducers/AdminReducer'
 
 const Sidebar = () => {
   const sidebarState = useSelector(state => state.admin)
@@ -9,8 +9,9 @@ const Sidebar = () => {
   const switchSlide = (i) => {
     dispatch(slideOut())
     setTimeout(() => {
+        dispatch(resetSlide())
         dispatch(slideIn(i))
-    },200)
+    },300)
   }
 
   return (
@@ -64,8 +65,7 @@ const Button = styled.button`
     transition: all 0.1s ease-in-out;
     border-style: ${props => props.active && 'inset'}; 
 
-    &:hover{opacity: .3}
-    &:active{opacity: 1}
+    &:hover{color: var(--ly);}
 `
 
 export default Sidebar
