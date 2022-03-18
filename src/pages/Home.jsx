@@ -9,12 +9,12 @@ import DailyHalach from '../components/DailyHalach';
 import Events from '../components/Events';
 import Footer from '../components/Footer';
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div>
         <InfoOverlay />
         <FlashMessage />
-        <Nav />
+        <Nav push={props.push} />
         <HeroSection />
         <DailyZman />
         <Publishings />

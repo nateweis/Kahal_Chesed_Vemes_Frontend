@@ -19,10 +19,10 @@ const ShabZmanEdit = () => {
 const Container = styled.div` 
     transition: .3s linear;
 
-    &.slide-in-out-enter{transform: translateX(-100vw);}
-    &.slide-in-out-enter-active{transform: translateX(0);}
-    &.slide-in-out-exit{transform: translateX(0);}
-    &.slide-in-out-exit-done{transform: translateX(-100vw);}
+    &.slide-in-out-enter{transform: translateY(100vh);}
+    &.slide-in-out-enter-active{transform: translateY(0);}
+    &.slide-in-out-exit{transform: translateY(0);}
+    &.slide-in-out-exit-done{transform: translateY(100vh);}
 `
 
 export default ShabZmanEdit

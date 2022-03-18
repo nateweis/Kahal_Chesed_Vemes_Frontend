@@ -4,8 +4,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {navTop} from '../reducers/PositionReducer';
 import {small, tablet} from '../responsive'
 import styled from 'styled-components';
+import Auth from '../modules/Auth';
 
-const Nav = () => {
+const Nav = (props) => {
   const navState = useSelector(state => state.nav)
   const dispatch = useDispatch()
   const hit = () => dispatch(navTop(true))
@@ -23,6 +24,7 @@ const Nav = () => {
                   <Links>Link</Links>
                   <Links>Link</Links>
                   <Links>Link</Links>
+                  {Auth.getToken() && <Links onClick={() => props.push('/admin/edits')} admin={true}>Admin Page</Links>}
                 </LinkWrapper>
               </Right>
           </Wrapper>
@@ -75,6 +77,7 @@ const LinkWrapper = styled.ul`
 `
 const Links = styled.li` 
  cursor: pointer;
+ color: ${props => props.admin && 'var(--ly)'};
 `
 
 export default Nav
