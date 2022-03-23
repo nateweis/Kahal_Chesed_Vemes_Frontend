@@ -14,7 +14,7 @@ const Home = (props) => {
     <div>
         <InfoOverlay />
         <FlashMessage />
-        <Nav push={props.push} />
+        <Nav />
         <HeroSection />
         <DailyZman />
         <Publishings />

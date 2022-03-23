@@ -11,7 +11,7 @@ const FlashEdit = () => {
   const msg = useSelector(state => state.admin.homeScreenData.flashMsg)
   const dispatch = useDispatch()
 
-    // Component State Stuff
+    // Component State 
   const [text, setText] = useState(msg)
   
 

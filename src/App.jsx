@@ -6,13 +6,15 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Admin from './pages/Admin';
+import Donations from './pages/Donations';
 
 const App = () => {
   return(
     <BrowserRouter>
       <Switch>
         <Route path="/" exact render={()=> <Redirect to="/home" /> } />
-        <Route path="/home" exact render={({history})=> <Home push={history.push} /> } />
+        <Route path="/home" exact render={()=> <Home /> } />
+        <Route path="/donations" exact render={()=> <Donations /> } />
         <Route path="/admin" exact render={({history})=> (Auth.getToken()? <Redirect to='/admin/edits' /> : <Login push={history.push} /> ) } />
         <Route path="/admin/edits" exact render={({history})=> (Auth.getToken()? <Admin push={history.push} /> : <Redirect to='/home' /> ) } />
 

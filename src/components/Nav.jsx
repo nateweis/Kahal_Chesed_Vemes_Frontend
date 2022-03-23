@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 import { Waypoint } from 'react-waypoint';
 import {useSelector, useDispatch} from "react-redux";
 import {navTop} from '../reducers/PositionReducer';
@@ -13,18 +14,18 @@ const Nav = (props) => {
 
   return (
     <Waypoint topOffset={navState.navState? 0 : 75} onLeave={hit}>
-      <Container navFix={navState.navState}>
+      <Container navFix={navState.navState} location={props.location.pathname}>
           <Wrapper>
-              <Left> <Logo>LOGO</Logo> </Left>
+              <Left> <Logo onClick={() => props.history.push('/home')} >LOGO</Logo> </Left>
 
               <Right>
                 <LinkWrapper>
-                  <Links>Link</Links>
-                  <Links>Link</Links>
-                  <Links>Link</Links>
-                  <Links>Link</Links>
-                  <Links>Link</Links>
-                  {Auth.getToken() && <Links onClick={() => props.push('/admin/edits')} admin={true}>Admin Page</Links>}
+                  <LinkStyle>Link</LinkStyle>
+                  <LinkStyle>Link</LinkStyle>
+                  <LinkStyle onClick={() => props.history.push('/donations')} >Donate</LinkStyle>
+                  <LinkStyle>Link</LinkStyle>
+                  <LinkStyle>Link</LinkStyle>
+                  {Auth.getToken() && <LinkStyle onClick={() => props.history.push('/admin/edits')} admin={true}>Admin Page</LinkStyle>}
                 </LinkWrapper>
               </Right>
           </Wrapper>
@@ -38,7 +39,7 @@ const Container = styled.div`
   height: 80px;
   width: 100% ;
   transition: .2s ease-in-out;
-  background-color: ${props => props.navFix? '#2A4158ee' : 'transparent'};
+  background-color: ${props => (props.navFix || props.location !== '/home')? '#2A4158ee' : 'transparent'};
   position: ${props => props.navFix? 'fixed' : 'relative'};
   top: ${props => props.navFix && 0};
   z-index: 10;
@@ -75,9 +76,9 @@ const LinkWrapper = styled.ul`
   justify-content: space-between;
   align-items: center;
 `
-const Links = styled.li` 
+const LinkStyle = styled.li` 
  cursor: pointer;
  color: ${props => props.admin && 'var(--ly)'};
 `
 
-export default Nav
+export default withRouter(Nav)
