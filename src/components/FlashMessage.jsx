@@ -8,6 +8,7 @@ const FlashMessage = () => {
   const [width, setWidth] = useState(30)
   const refMessage = useRef(null)
   const navState = useSelector(state => state.nav)
+  const msg = useSelector(state => state.admin.homeScreenData.flashMsg)
   const dispatch = useDispatch()
   useEffect(() => {
     setWidth(refMessage.current.offsetWidth)
@@ -19,7 +20,7 @@ const FlashMessage = () => {
     <Waypoint onEnter={entered} bottomOffset={navState.navState? 20: 0}>
       <Container>
           <Wrapper ref={refMessage} num={width} time={20} >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, voluptatem! Nesciunt perferendis qui sapiente, laborum reprehenderit nam hic officia beatae eos odit minima, magni cumque accusamus dolorem id ipsa? Non.
+              {msg}
           </Wrapper> 
       </Container>
     </Waypoint>

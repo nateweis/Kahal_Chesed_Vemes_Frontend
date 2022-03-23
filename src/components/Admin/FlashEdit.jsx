@@ -1,21 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {singleHomeEdit} from '../../reducers/AdminReducer';
 
 import {CSSTransition} from 'react-transition-group';
 
 const FlashEdit = () => {
+    // Redux Stuff
   const display = useSelector(state => state.admin.animate[0])
-  const msg = useSelector(state => state.admin.homesSreenData.flashMsg)
+  const msg = useSelector(state => state.admin.homeScreenData.flashMsg)
+  const dispatch = useDispatch()
 
+    // Component State Stuff
+  const [text, setText] = useState(msg)
+  
+
+    // Component Functions
   const submit = () => {
+      dispatch(singleHomeEdit({name: 'flashMsg', data: text}))
       alert("Flash Message Has Been Updated!")
   }
 
   return (
     <CSSTransition classNames={'slide-in-out'} in={display} timeout={0}>
         <Container>
-            <TextArea>{msg}</TextArea>
+            <TextArea onChange={(e) => setText(e.target.value)} value={text}></TextArea>
             <Submit onClick={submit}>Submit</Submit>
         </Container>
     </CSSTransition>
